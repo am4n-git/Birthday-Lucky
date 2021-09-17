@@ -5,11 +5,17 @@ const outputBox = document.querySelector("#output-box")
 function checkBirthdateIsLucky(){
     const dob = dateOfBirth.value;
     const sum = calculateSum(dob);
-    if(dob && luckyNumber.value){
+    if(dob && luckyNumber.value>0){
         compareValues(sum, luckyNumber.value)
     }
+    else if(luckyNumber.value<0){
+        outputBox.innerText="Invalid Input: Negative Values not allowed";
+        outputBox.style.color= 'black';
+
+    }
     else{
-        alert("Enter the required fields ⚠")
+        outputBox.innerText="Enter the required fields ⚠"
+        outputBox.style.color= 'black';
     }
 }
 
@@ -26,9 +32,11 @@ function calculateSum(dob){
 function compareValues(sum, luckyNumber){
     if(sum%luckyNumber===0){
         outputBox.innerText="Your Birthday is Lucky! \n\n🥳"
+        outputBox.style.color= 'crimson';
     }
     else{
         outputBox.innerText="Your Birthday is not lucky \n\n🙁"
+        outputBox.style.color= 'crimson';
     }
 }
 
